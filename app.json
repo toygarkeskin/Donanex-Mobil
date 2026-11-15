@@ -1,17 +1,20 @@
 {
   "expo": {
-    "name": "donanex-mobil",
+    "name": "Donanex",
     "slug": "donanex-mobil",
+    "scheme": "donanexmobil",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.donanex.mobil"
     },
     "android": {
+      "package": "com.donanex.mobil",
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#2456D8",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -20,6 +23,19 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router",
+      "expo-status-bar",
+      "expo-secure-store",
+      "expo-image",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Yorumunuza fotoğraf eklemek için galerinize erişim gerekiyor."
+        }
+      ],
+      "expo-font"
+    ]
   }
 }
