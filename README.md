@@ -1,7 +1,8 @@
 # Donanex Mobil
 
 Donanex çok satıcılı teknoloji pazaryerinin telefon uygulaması (Expo SDK 58, React Native 0.88,
-Expo Router). Web sitesiyle **aynı API'yi** kullanır; ayrı bir sunucu yoktur.
+Expo Router). Web sitesiyle **aynı API'yi** kullanır; ayrı bir sunucu yoktur. Sunucu ve web sitesi:
+[toygarkeskin/Donanex](https://github.com/toygarkeskin/Donanex).
 
 ## Ekranlar
 
@@ -29,6 +30,12 @@ npx expo start
 
 Telefona **Expo Go** kurup terminaldeki QR kodu okutun. Uygulama, Expo'nun çalıştığı bilgisayarı
 bulup `http://<bilgisayar>:8090` adresine bağlanır.
+
+- **iPhone:** Expo Go projeyi açmak için telefonda ve bilgisayarda **aynı Expo hesabıyla** giriş
+  ister. Telefonda Expo Go → Profile → Log in; bilgisayarda `npx expo login`.
+- **Windows PowerShell** "running scripts is disabled" derse komutları `npx.cmd` / `npm.cmd` ile
+  çalıştırın (ayar değiştirmeye gerek yok).
+- Telefonsuz bakmak için `npx expo start` açıkken **w**: tarayıcıda açılır.
 
 Telefon bilgisayara aynı Wi-Fi'dan ulaşamıyorsa (güvenlik duvarı, misafir ağı):
 
