@@ -3,6 +3,7 @@ import { AccessibilityInfo, FlatList, Pressable, StyleSheet, Text, View, useWind
 import { Image } from "expo-image";
 import { useRouter } from "expo-router";
 import { resim } from "@/lib/sunucu";
+import { buyukHarf } from "@/lib/bicim";
 import { bosluk, kose, renk } from "@/tema";
 
 export interface Kategori {
@@ -115,7 +116,7 @@ export function AnaSlider({ kategoriler, urunSayisi, magazaSayisi }: { kategoril
             accessibilityLabel={`${item.baslik}. ${item.dugme}`}
           >
             <View style={{ flex: 1, gap: 6 }}>
-              <Text style={st.ust}>{item.ust.toLocaleUpperCase("tr-TR")}</Text>
+              <Text style={st.ust}>{buyukHarf(item.ust)}</Text>
               <Text style={st.baslik} numberOfLines={3}>
                 {item.baslik}
               </Text>

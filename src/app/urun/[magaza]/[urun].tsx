@@ -5,7 +5,7 @@ import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { api } from "@/lib/api";
-import { para, type Para } from "@/lib/bicim";
+import { para, sayi, type Para } from "@/lib/bicim";
 import { resim } from "@/lib/sunucu";
 import { useSepet } from "@/state/Sepet";
 import { useMesaj } from "@/components/Mesaj";
@@ -117,7 +117,7 @@ export default function UrunSayfasi() {
             <View style={st.puan}>
               <YildizPuan puan={ozet.average} />
               <Text style={st.puanYazi}>
-                {ozet.average.toLocaleString("tr-TR")} · {ozet.count} değerlendirme
+                {sayi(ozet.average)} · {ozet.count} değerlendirme
               </Text>
             </View>
           ) : null}

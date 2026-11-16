@@ -5,7 +5,7 @@ import { useRouter } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
 import { api } from "@/lib/api";
-import { tarih } from "@/lib/bicim";
+import { sayi, tarih } from "@/lib/bicim";
 import { resim } from "@/lib/sunucu";
 import { useOturum } from "@/state/Oturum";
 import { useMesaj } from "./Mesaj";
@@ -143,7 +143,7 @@ export function Yorumlar({ urunId, ozetGeldi }: { urunId: string; ozetGeldi?: (o
       {ozet?.count ? (
         <Kart style={st.ozet}>
           <View style={{ alignItems: "center", paddingRight: bosluk.m }}>
-            <Text style={st.ortalama}>{ozet.average.toLocaleString("tr-TR")}</Text>
+            <Text style={st.ortalama}>{sayi(ozet.average)}</Text>
             <YildizPuan puan={ozet.average} boyut={16} />
             <Text style={st.kucuk}>{ozet.count} değerlendirme</Text>
           </View>

@@ -7,6 +7,7 @@ import { sunucu } from "@/lib/sunucu";
 import { useOturum } from "@/state/Oturum";
 import { Buton, Kart } from "@/components/Ui";
 import { useMesaj } from "@/components/Mesaj";
+import { buyukHarf } from "@/lib/bicim";
 import { bosluk, kose, renk } from "@/tema";
 
 type IkonAdi = keyof typeof Ionicons.glyphMap;
@@ -70,7 +71,7 @@ export default function Hesap() {
       {kullanici ? (
         <Kart style={st.profil}>
           <View style={st.avatar}>
-            <Text style={st.avatarYazi}>{kullanici.fullName.slice(0, 1).toLocaleUpperCase("tr-TR")}</Text>
+            <Text style={st.avatarYazi}>{buyukHarf(kullanici.fullName.slice(0, 1))}</Text>
           </View>
           <View style={{ flex: 1 }}>
             <Text style={st.ad}>{kullanici.fullName}</Text>
