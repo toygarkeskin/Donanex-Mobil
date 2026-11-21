@@ -13,11 +13,14 @@ import { sunucu } from "./sunucu";
 export class ApiHatasi extends Error {
   durum: number;
   kod?: string;
-  constructor(mesaj: string, durum: number, kod?: string) {
+  /** Sunucunun hata ayrıntısı (ör. { reason: "auth_request_expired" }). */
+  ayrinti?: Record<string, unknown>;
+  constructor(mesaj: string, durum: number, kod?: string, ayrinti?: Record<string, unknown>) {
     super(mesaj);
     this.name = "ApiHatasi";
     this.durum = durum;
     this.kod = kod;
+    this.ayrinti = ayrinti;
   }
 }
 
@@ -104,7 +107,7 @@ export async function api<T = any>(yol: string, secenek: Secenek = {}): Promise<
 
   if (!yanit.ok) {
     const mesaj = veri?.message || veri?.error_description || `İstek başarısız (${yanit.status}).`;
-    throw new ApiHatasi(mesaj, yanit.status, veri?.error);
+    throw new ApiHatasi(mesaj, yanit.status, veri?.error, veri?.details);
   }
   return veri as T;
 }

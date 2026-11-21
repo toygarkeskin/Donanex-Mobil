@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
-import { api, erisimAyarla, sepetKimligiSil, yenileyiciBagla } from "@/lib/api";
+import { api, ApiHatasi, erisimAyarla, sepetKimligiSil, yenileyiciBagla } from "@/lib/api";
 import { ANAHTAR, gizli } from "@/lib/depo";
 import { girisBaslat, jetonYenile, kodDegistir, koduAl, type GirisIstegi, type Jetonlar } from "@/lib/giris";
 
@@ -134,11 +134,21 @@ export function OturumSaglayici({ children, onDegisti }: { children: ReactNode; 
     },
 
     async kodGonder(challengeId, kod) {
-      const yanit = await api.post<any>("/auth/sign-in/verify", {
-        challengeId,
-        code: kod,
-        authRequestId: istek.current?.authRequestId
-      });
+      const dogrula = () =>
+        api.post<any>("/auth/sign-in/verify", { challengeId, code: kod, authRequestId: istek.current?.authRequestId });
+      let yanit;
+      try {
+        yanit = await dogrula();
+      } catch (hata) {
+        /*
+         * Kod ekranında uzun beklenip (kod yeniden istenince) yetkilendirme
+         * isteğinin 15 dakikası dolduysa: sunucu kodu harcamadan reddediyor,
+         * yeni istek açıp aynı kodu bir kez daha gönderiyoruz.
+         */
+        if (!(hata instanceof ApiHatasi) || hata.ayrinti?.reason !== "auth_request_expired") throw hata;
+        await istekHazirla();
+        yanit = await dogrula();
+      }
       await tamamla(yanit.redirectTo);
     },
 
