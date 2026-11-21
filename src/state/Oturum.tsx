@@ -9,6 +9,8 @@ export interface Kullanici {
   fullName: string;
   phone?: string | null;
   emailVerified?: boolean;
+  /** Yetkili olduğu mağazalar (mağaza paneli web'de). */
+  stores?: { id: string; slug: string; name: string }[];
 }
 
 /** Parola adımından sonra kod bekleniyor. */

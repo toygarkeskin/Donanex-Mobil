@@ -89,6 +89,13 @@ export const PAKET_DURUMU: Record<string, { etiket: string; ton: Ton }> = {
   refunded: { etiket: "İade edildi", ton: "kotu" }
 };
 
+export const TALEP_DURUMU: Record<string, { etiket: string; ton: Ton }> = {
+  open: { etiket: "Açık", ton: "uyari" },
+  in_progress: { etiket: "İnceleniyor", ton: "bilgi" },
+  answered: { etiket: "Yanıtlandı", ton: "iyi" },
+  closed: { etiket: "Kapatıldı", ton: "bilgi" }
+};
+
 export const SEPET_SORUNU: Record<string, string> = {
   removed: "Bu ürün kaldırılmış.",
   unavailable: "Bu ürün şu anda satışta değil.",

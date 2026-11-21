@@ -109,7 +109,15 @@ export default function UrunSayfasi() {
         </View>
 
         <View style={{ padding: bosluk.l, gap: bosluk.s }}>
-          {urun.brandName ? <Text style={st.marka}>{urun.brandName}</Text> : null}
+          {urun.brandName ? (
+            urun.brandSlug ? (
+              <Pressable onPress={() => router.push(`/marka/${urun.brandSlug}`)} hitSlop={8} accessibilityRole="link" style={{ alignSelf: "flex-start" }}>
+                <Text style={st.marka}>{urun.brandName} ›</Text>
+              </Pressable>
+            ) : (
+              <Text style={st.marka}>{urun.brandName}</Text>
+            )
+          ) : null}
           <Text style={st.ad} accessibilityRole="header">
             {urun.name}
           </Text>

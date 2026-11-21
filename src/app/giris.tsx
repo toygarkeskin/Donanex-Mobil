@@ -117,6 +117,9 @@ export default function Giris() {
               onSubmitEditing={parolaGonder}
               maxLength={200}
             />
+            <Pressable onPress={() => router.push("/parola-unuttum")} style={{ alignSelf: "flex-end" }} hitSlop={8} accessibilityRole="link">
+              <Text style={st.link}>Parolamı unuttum</Text>
+            </Pressable>
             <Buton baslik="Devam et" yukleniyor={gonderiliyor} disabled={!email || !parola} onPress={parolaGonder} />
             <Pressable onPress={() => router.replace("/kayit")} style={{ alignSelf: "center", padding: 8 }} accessibilityRole="link">
               <Text style={st.link}>Hesabınız yok mu? Kayıt olun</Text>

@@ -57,7 +57,7 @@ export default function Kayit() {
           secureTextEntry
           autoComplete="new-password"
           textContentType="newPassword"
-          ipucu="En az 8 karakter; harf ve rakam içersin."
+          ipucu="En az 10 karakter; harf ve rakam içersin."
           maxLength={200}
         />
         <Buton baslik="Kayıt ol" yukleniyor={gonderiliyor} disabled={!ad || !email || !parola} onPress={gonder} />

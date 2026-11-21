@@ -10,14 +10,18 @@ Expo Router). Web sitesiyle **aynı API'yi** kullanır; ayrı bir sunucu yoktur.
 |---|---|
 | Ana sayfa | Canlı kategorilerden slider, kategoriler, son gelenler, mağazalar; bildirim zili |
 | Ürünler | Arama (yazarken), kategori ve sıralama, sonsuz kaydırma |
-| Ürün | Fotoğraf galerisi, adetli sepete ekleme, "Bunları da sepete ekleyebilirsiniz", yorumlar (fotoğraflı), soru-cevap, benzer ürünler |
-| Mağaza | Mağaza vitrini ve ürünleri |
+| Ürün | Fotoğraf galerisi, adetli sepete ekleme, "Bunları da sepete ekleyebilirsiniz", yorumlar (fotoğraflı), soru-cevap, benzer ürünler, marka bağlantısı |
+| Mağazalar / Mağaza | Bütün mağazalar (arama), mağaza vitrini ve ürünleri |
+| Marka | Markayı satan mağazalar ve markanın ürünleri |
 | Sepetim | Adet değiştirme, kaldırma, sorunlu satır uyarısı, tamamlayıcı öneriler; boşken genel öneriler |
 | Siparişi tamamla / Ödeme | Kayıtlı adresle otomatik dolum, ödeme benzetimi, misafir takip kodu |
-| Hesabım | Siparişlerim ve detayı (iptal), bildirimler, sipariş takibi, sunucu adresi, çıkış |
-| Giriş / Kayıt | Parola + e-postaya gelen 6 haneli kod |
+| Hesabım | Siparişlerim ve detayı (iptal), bildirimler, adreslerim (ekle/düzenle/sil), hesap bilgilerim (ad, telefon, parola), destek taleplerim (yanıtlar, ekler), mağaza başvurusu, sipariş takibi, sunucu adresi, çıkış |
+| Destek | Yeni talep; giriş yapmışsa PNG/JPEG/WebP/PDF ekleri |
+| Yardım ve bilgiler | Hakkımızda, SSS, KVKK, gizlilik, çerez, mesafeli satış, iptal-iade, garanti, ödeme güvenliği (metin web'dekiyle aynı: `src/icerik/bilgiSayfalari.ts`) |
+| Giriş / Kayıt / Parolamı unuttum | Parola + e-postaya gelen 6 haneli kod; sıfırlama bağlantısı e-postayla gelir, web'de açılır |
 
-Mağaza ve yönetim panelleri web sitesinde kalır.
+Mağaza ve yönetim panelleri web sitesinde kalır (Hesabım › Mağazam web panelini açar). Parola
+değişince sunucu bütün yenileme jetonlarını iptal ettiği için uygulama yeni parolayla giriş ister.
 
 ## Çalıştırma
 

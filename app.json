@@ -35,7 +35,8 @@
           "photosPermission": "Yorumunuza fotoğraf eklemek için galerinize erişim gerekiyor."
         }
       ],
-      "expo-font"
+      "expo-font",
+      "expo-asset"
     ]
   }
 }

@@ -22,6 +22,7 @@ export interface Urun {
   categoryName?: string;
   categorySlug?: string;
   brandName?: string | null;
+  brandSlug?: string | null;
   publishedAt?: string | null;
 }
 

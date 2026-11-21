@@ -33,6 +33,8 @@ export const erisimAyarla = (jeton: string | null) => {
   erisim = jeton;
 };
 export const erisimVar = () => Boolean(erisim);
+/** Korumalı dosyayı (talep eki) görsel bileşeninde göstermek için. */
+export const erisimJetonu = () => erisim;
 export const yenileyiciBagla = (fn: () => Promise<string | null>, dustu: () => void) => {
   yenileyici = fn;
   oturumDustu = dustu;

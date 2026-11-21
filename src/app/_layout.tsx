@@ -50,6 +50,17 @@ export default function KokDuzen() {
                 <Stack.Screen name="bildirimler" options={{ title: "Bildirimler" }} />
                 <Stack.Screen name="sunucu" options={{ title: "Sunucu adresi" }} />
                 <Stack.Screen name="siparis-takip" options={{ title: "Sipariş takibi" }} />
+                <Stack.Screen name="magazalar" options={{ title: "Mağazalar" }} />
+                <Stack.Screen name="marka/[slug]" options={{ title: "Marka" }} />
+                <Stack.Screen name="adresler" options={{ title: "Adreslerim" }} />
+                <Stack.Screen name="profil" options={{ title: "Hesap bilgilerim" }} />
+                <Stack.Screen name="talepler/index" options={{ title: "Destek taleplerim" }} />
+                <Stack.Screen name="talepler/[id]" options={{ title: "Destek talebi" }} />
+                <Stack.Screen name="destek" options={{ title: "Destek" }} />
+                <Stack.Screen name="parola-unuttum" options={{ title: "Parolamı unuttum" }} />
+                <Stack.Screen name="magaza-basvurusu" options={{ title: "Mağaza aç" }} />
+                <Stack.Screen name="bilgi/index" options={{ title: "Yardım ve bilgiler" }} />
+                <Stack.Screen name="bilgi/[anahtar]" options={{ title: "Bilgi" }} />
               </Stack>
             </SepetSaglayici>
           </OturumSaglayici>

@@ -164,9 +164,14 @@ export default function AnaSayfa() {
           </View>
 
           <View style={{ marginTop: bosluk.xl, paddingHorizontal: bosluk.l, gap: bosluk.m }}>
-            <Text style={st.bolum} accessibilityRole="header">
-              Mağazalar
-            </Text>
+            <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
+              <Text style={st.bolum} accessibilityRole="header">
+                Mağazalar
+              </Text>
+              <Pressable onPress={() => router.push("/magazalar")} hitSlop={8} accessibilityRole="link">
+                <Text style={st.tumu}>Tümü</Text>
+              </Pressable>
+            </View>
             {magazalar.map((m) => (
               <Pressable
                 key={m.id}

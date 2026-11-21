@@ -92,9 +92,21 @@ export default function Hesap() {
           <>
             <Satir ikon="receipt-outline" baslik="Siparişlerim" onPress={() => router.push("/siparisler")} />
             <Satir ikon="notifications-outline" baslik="Bildirimler" rozet={okunmamis} onPress={() => router.push("/bildirimler")} />
+            <Satir ikon="location-outline" baslik="Adreslerim" alt="Ödemede hazır gelir" onPress={() => router.push("/adresler")} />
+            <Satir ikon="person-outline" baslik="Hesap bilgilerim" alt="Ad, telefon, parola" onPress={() => router.push("/profil")} />
+            <Satir ikon="chatbubbles-outline" baslik="Destek taleplerim" onPress={() => router.push("/talepler")} />
+            <Satir
+              ikon="storefront-outline"
+              baslik={kullanici.stores?.length ? "Mağazam" : "Mağaza aç"}
+              alt={kullanici.stores?.length ? "Mağaza paneli web sitesinde" : "Donanex'te satış yapın"}
+              onPress={() => router.push("/magaza-basvurusu")}
+            />
           </>
         ) : null}
+        <Satir ikon="business-outline" baslik="Mağazalar" onPress={() => router.push("/magazalar")} />
         <Satir ikon="search-outline" baslik="Sipariş takibi" alt="Üye olmadan verilen siparişler için" onPress={() => router.push("/siparis-takip")} />
+        {kullanici ? null : <Satir ikon="help-buoy-outline" baslik="Destek" alt="Bize yazın" onPress={() => router.push("/destek")} />}
+        <Satir ikon="information-circle-outline" baslik="Yardım ve bilgiler" alt="SSS, iade, KVKK, sözleşmeler" onPress={() => router.push("/bilgi")} />
         <Satir ikon="server-outline" baslik="Sunucu adresi" alt={sunucu()} onPress={() => router.push("/sunucu")} />
       </View>
 
