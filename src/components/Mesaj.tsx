@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useRef, useState, type ReactNode } from "react";
-import { Animated, StyleSheet, Text, View } from "react-native";
+import { Animated, Platform, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Ionicons } from "@expo/vector-icons";
 import { kose, renk } from "@/tema";
@@ -9,6 +9,8 @@ import { kose, renk } from "@/tema";
  * görünüp kayboluyor; ekran okuyucuya "polite" olarak duyuruluyor.
  */
 type Tur = "basari" | "hata" | "bilgi";
+/** Yerel animasyon sürücüsü telefonda var, web önizlemesinde yok (orada uyarı basıyordu). */
+const YEREL_SURUCU = Platform.OS !== "web";
 const Baglam = createContext<(mesaj: string, tur?: Tur) => void>(() => {});
 
 export function MesajSaglayici({ children }: { children: ReactNode }) {
@@ -21,9 +23,9 @@ export function MesajSaglayici({ children }: { children: ReactNode }) {
     (metin: string, tur: Tur = "bilgi") => {
       if (zaman.current) clearTimeout(zaman.current);
       setMesaj({ metin, tur });
-      Animated.timing(opaklik, { toValue: 1, duration: 150, useNativeDriver: true }).start();
+      Animated.timing(opaklik, { toValue: 1, duration: 150, useNativeDriver: YEREL_SURUCU }).start();
       zaman.current = setTimeout(() => {
-        Animated.timing(opaklik, { toValue: 0, duration: 200, useNativeDriver: true }).start(() => setMesaj(null));
+        Animated.timing(opaklik, { toValue: 0, duration: 200, useNativeDriver: YEREL_SURUCU }).start(() => setMesaj(null));
       }, 3200);
     },
     [opaklik]
