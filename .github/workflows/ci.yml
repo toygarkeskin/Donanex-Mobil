@@ -1,0 +1,32 @@
+# Her gönderim ve çekme isteğinde: tip kontrolü, lint ve Expo yapılandırma
+# denetimi. Yetki en az: yalnızca kodu okur.
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  denetim:
+    name: Tip kontrolü, lint, expo-doctor
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npx expo lint
+      - run: npx expo-doctor

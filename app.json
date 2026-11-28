@@ -14,7 +14,7 @@
     "android": {
       "package": "com.donanex.mobil",
       "adaptiveIcon": {
-        "backgroundColor": "#2456D8",
+        "backgroundColor": "#1A1E25",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -36,7 +36,16 @@
         }
       ],
       "expo-font",
-      "expo-asset"
+      "expo-asset",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "resizeMode": "contain",
+          "backgroundColor": "#1A1E25"
+        }
+      ]
     ]
   }
 }

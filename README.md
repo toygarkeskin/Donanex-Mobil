@@ -53,6 +53,18 @@ Demo hesaplarının e-postaları (giriş kodu dahil) gerçek kutuya değil Mailp
 > Bu bilgisayarda 8081 portunu McAfee (macmnsvc) tutuyor; Expo başka port isterse
 > `npx expo start --port 8099` kullanın.
 
+> **Proje OneDrive içindeyse:** OneDrive `node_modules`'teki dosyaları eşitleyip bulut yer
+> tutucusuna çeviriyor; Metro bunları okuyamıyor (`readlink EINVAL`, `TreeFS` hataları,
+> "Unable to resolve expo-asset"). Bu makinede `node_modules` OneDrive dışında
+> (`%LOCALAPPDATA%\DonanexMobil\node_modules`) duruyor, proje içinden ona bir dizin bağlantısı
+> (junction) var. Başka makinede aynısı:
+>
+> ```powershell
+> mkdir "$env:LOCALAPPDATA\DonanexMobil\node_modules"
+> cmd /c mklink /J node_modules "$env:LOCALAPPDATA\DonanexMobil\node_modules"
+> npm ci
+> ```
+
 ## Mimari
 
 ```

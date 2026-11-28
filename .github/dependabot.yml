@@ -1,0 +1,23 @@
+# Dependabot: güncelleme önerilerini haftalık çekme isteği olarak açar.
+# Expo paketleri SDK'ya bağlı sürümlerde tutulmalı (npx expo install --check);
+# Expo'nun kendi paketleri burada GÜNCELLENMİYOR, yanlış sürüme çekilmesin.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    ignore:
+      - dependency-name: "expo"
+      - dependency-name: "expo-*"
+      - dependency-name: "react"
+      - dependency-name: "react-dom"
+      - dependency-name: "react-native"
+      - dependency-name: "react-native-*"
+      - dependency-name: "@expo/*"
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

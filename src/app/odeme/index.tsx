@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { KeyboardAvoidingView, Platform, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useRouter } from "expo-router";
-import { api } from "@/lib/api";
+import * as Crypto from "expo-crypto";
+import { api, ApiHatasi } from "@/lib/api";
 import { para } from "@/lib/bicim";
 import { siparisSakla } from "@/lib/siparis";
 import { useOturum } from "@/state/Oturum";
@@ -31,6 +32,9 @@ export default function Odeme() {
   const [adresler, setAdresler] = useState<Adres[]>([]);
   const [hata, setHata] = useState("");
   const [gonderiliyor, setGonderiliyor] = useState(false);
+  // Bu sipariş denemesinin anahtarı: çift dokunma ya da ağ tekrarı ikinci sipariş açmaz.
+  const [denemeAnahtari] = useState(() => Crypto.randomUUID());
+  const [fiyatDegisti, setFiyatDegisti] = useState(false);
 
   const alan = (ad: keyof typeof form) => ({
     value: form[ad],
@@ -57,7 +61,12 @@ export default function Odeme() {
     setHata("");
     setGonderiliyor(true);
     try {
-      const sonuc = await api.post<{ orderId: string; orderNumber: string; trackingCode?: string | null }>("/orders", {
+      const sonuc = await api<{ orderId: string; orderNumber: string; trackingCode?: string | null }>("/orders", {
+        method: "POST",
+        basliklar: { "Idempotency-Key": denemeAnahtari },
+        body: {
+        // Ekranda gösterilen toplam: sunucuda farklıysa sipariş açılmaz, yeni toplam gösterilir.
+        expectedTotalCents: sepet.subtotal?.cents ?? null,
         contact: { email: form.email.trim(), fullName: form.fullName.trim(), phone: form.phone.trim() },
         shippingAddress: {
           fullName: form.fullName.trim(),
@@ -68,11 +77,19 @@ export default function Odeme() {
           postalCode: form.postalCode.trim() || null
         },
         note: form.note.trim() || null
+        }
       });
       siparisSakla({ orderId: sonuc.orderId, orderNumber: sonuc.orderNumber, trackingCode: sonuc.trackingCode ?? null });
       sepet.sifirla();
       router.replace(`/odeme/${sonuc.orderId}`);
     } catch (e: any) {
+      if (e instanceof ApiHatasi && e.ayrinti?.reason === "price_changed") {
+        await sepet.yukle().catch(() => {});
+        setFiyatDegisti(true);
+        setHata("");
+        mesaj("Fiyatlar değişti. Yeni toplamı kontrol edip yeniden onaylayın.", "hata");
+        return;
+      }
       setHata(e.message);
       mesaj(e.message, "hata");
     } finally {
@@ -136,6 +153,7 @@ export default function Odeme() {
             <Text style={[st.etiket, { fontWeight: "800", color: renk.murekkep900 }]}>Toplam</Text>
             <Text style={st.toplam}>{para(sepet.subtotal)}</Text>
           </View>
+          {fiyatDegisti ? <Uyari>Siz bu sayfadayken bazı ürünlerin fiyatı değişti; toplam güncellendi. Kontrol edip yeniden onaylayın.</Uyari> : null}
           <Buton baslik="Siparişi onayla" ikon="checkmark-circle-outline" yukleniyor={gonderiliyor} disabled={!sepet.canCheckout} onPress={gonder} />
           <Text style={st.not}>Tutar sunucuda hesaplanır; sepetteki fiyatlar güncel üründen okunur.</Text>
         </Kart>
