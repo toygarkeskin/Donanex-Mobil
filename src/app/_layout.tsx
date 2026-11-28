@@ -54,6 +54,7 @@ export default function KokDuzen() {
                 <Stack.Screen name="marka/[slug]" options={{ title: "Marka" }} />
                 <Stack.Screen name="adresler" options={{ title: "Adreslerim" }} />
                 <Stack.Screen name="profil" options={{ title: "Hesap bilgilerim" }} />
+                <Stack.Screen name="guvenlik" options={{ title: "Güvenlik" }} />
                 <Stack.Screen name="talepler/index" options={{ title: "Destek taleplerim" }} />
                 <Stack.Screen name="talepler/[id]" options={{ title: "Destek talebi" }} />
                 <Stack.Screen name="destek" options={{ title: "Destek" }} />

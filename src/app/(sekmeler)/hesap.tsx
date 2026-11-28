@@ -94,6 +94,7 @@ export default function Hesap() {
             <Satir ikon="notifications-outline" baslik="Bildirimler" rozet={okunmamis} onPress={() => router.push("/bildirimler")} />
             <Satir ikon="location-outline" baslik="Adreslerim" alt="Ödemede hazır gelir" onPress={() => router.push("/adresler")} />
             <Satir ikon="person-outline" baslik="Hesap bilgilerim" alt="Ad, telefon, parola" onPress={() => router.push("/profil")} />
+            <Satir ikon="shield-checkmark-outline" baslik="Güvenlik" alt="Oturumlar, güvenlik puanı" onPress={() => router.push("/guvenlik")} />
             <Satir ikon="chatbubbles-outline" baslik="Destek taleplerim" onPress={() => router.push("/talepler")} />
             <Satir
               ikon="storefront-outline"

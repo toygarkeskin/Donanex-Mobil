@@ -15,7 +15,7 @@ Expo Router). Web sitesiyle **aynı API'yi** kullanır; ayrı bir sunucu yoktur.
 | Marka | Markayı satan mağazalar ve markanın ürünleri |
 | Sepetim | Adet değiştirme, kaldırma, sorunlu satır uyarısı, tamamlayıcı öneriler; boşken genel öneriler |
 | Siparişi tamamla / Ödeme | Kayıtlı adresle otomatik dolum, ödeme benzetimi, misafir takip kodu |
-| Hesabım | Siparişlerim ve detayı (iptal), bildirimler, adreslerim (ekle/düzenle/sil), hesap bilgilerim (ad, telefon, parola), destek taleplerim (yanıtlar, ekler), mağaza başvurusu, sipariş takibi, sunucu adresi, çıkış |
+| Hesabım | Siparişlerim ve detayı (iptal), bildirimler, adreslerim (ekle/düzenle/sil), hesap bilgilerim (ad, telefon, parola), güvenlik (puan, açık oturumlar ve uzaktan kapatma, son güvenlik olayları), destek taleplerim (yanıtlar, ekler), mağaza başvurusu, sipariş takibi, sunucu adresi, çıkış |
 | Destek | Yeni talep; giriş yapmışsa PNG/JPEG/WebP/PDF ekleri |
 | Yardım ve bilgiler | Hakkımızda, SSS, KVKK, gizlilik, çerez, mesafeli satış, iptal-iade, garanti, ödeme güvenliği (metin web'dekiyle aynı: `src/icerik/bilgiSayfalari.ts`) |
 | Giriş / Kayıt / Parolamı unuttum | Parola + e-postaya gelen 6 haneli kod; sıfırlama bağlantısı e-postayla gelir, web'de açılır |
