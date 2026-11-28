@@ -16,6 +16,16 @@ updates:
       - dependency-name: "react-native"
       - dependency-name: "react-native-*"
       - dependency-name: "@expo/*"
+      # Expo SDK'nın sabitlediği yerel modüller (npx expo install yönetir).
+      - dependency-name: "@react-native-async-storage/*"
+      # Ana sürüm atlamaları SDK ile birlikte yapılır; tek başına derlemeyi
+      # bozuyor (TypeScript 7 ve ESLint 10 ilk denemede CI'da kırıldı).
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "eslint-config-expo"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: /
